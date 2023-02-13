@@ -4,7 +4,12 @@ function main() {
   const canvas = document.querySelector("#space");
   const renderer = new THREE.WebGLRenderer({ canvas });
   const scene = new THREE.Scene();
-  const material = new THREE.MeshBasicMaterial({ color: 0x44aaff });
+  const material = new THREE.MeshPhongMaterial({ color: 0x44aaff });
+
+  // Light brightness intensity
+  const light = new THREE.DirectionalLight(0xffffff, 1);
+  light.position.set(-1, 2, 5);
+  scene.add(light);
 
   const defaultCanvasConfig = {
     fov: 50,
