@@ -1,0 +1,35 @@
+# Build from React Vite app and push it into `gh-pages` branch and deploy it to
+# public viewers.
+name: GH-Pages
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ github.THREEJS_TOKEN }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Node version 19
+        uses: actions/setup-node@v3
+        with:
+          node-version: 19
+      - name: npm ci
+        run: |
+          npm install
+          npm run build
+
+      - name: Deploy
+        run: |
+          cd dist
+          git init
+          git config user.name "Asncodes-80"
+          git config user.email "asn80.asn@hotmail.com"
+          git remote add secure-origin https://username:${GITHUB_TOKEN}@github.com/Asncodes-80/3js-space.git
+          git checkout -b gh-pages
+          git add .
+          git commit -m "ci(gh-pages): update and deploy web app"
+          git push --force secure-origin gh-pages
