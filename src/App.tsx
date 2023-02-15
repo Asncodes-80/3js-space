@@ -1,4 +1,3 @@
-import "./App.css";
 import CubeThree from "./Cube";
 
 function App() {

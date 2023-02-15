@@ -35,17 +35,17 @@ const CubeThree = (): JSX.Element => {
     scene.add(light);
 
     const defaultCanvasConfig: CanvasConfigParameters = {
-      fov: 50,
+      fov: 100,
       aspectRatio: window.innerWidth / window.innerHeight,
-      near: 0.5,
+      near: 0.1,
       farDistance: 10,
     };
 
     /** Square configurations */
     const objectConfig = {
-      width: 0.5,
-      height: 1,
-      depth: 1,
+      width: 0.4,
+      height: 0.4,
+      depth: 0.1,
     };
 
     const camera = new THREE.PerspectiveCamera(
